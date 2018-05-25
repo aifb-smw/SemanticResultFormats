@@ -1,5 +1,5 @@
 {
-	"name": "mediawiki/semantic-result-formats",
+	"name": "aifb-smw/mediawiki-SemanticResultFormats",
 	"type": "mediawiki-extension",
 	"description": "Provides additional result formats for queries using Semantic MediaWiki",
 	"keywords": [
