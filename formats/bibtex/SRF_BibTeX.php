@@ -255,9 +255,9 @@ class SMWBibTeXEntry {
 		if ( $year ) $fields['year'] = $year;
 		
 		// fix Umlaute and other non-ascii chars
-		//foreach($fields as $key=>$val)
-		//	if ($key!="evastar_pdf")
-		//		$fields[$key]=SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($val));
+		foreach($fields as $key=>$val)
+			if ($key!="evastar_pdf")
+				$fields[$key]=SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($val));
 
 
 		$this->fields = $fields;
