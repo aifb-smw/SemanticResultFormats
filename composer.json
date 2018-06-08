@@ -73,6 +73,7 @@
 		"branch-alias": {
 			"dev-master": "3.0.x-dev"
 		}
+		"installer-name": "SemanticResultFormats"
 	},
 	"config": {
 		"process-timeout": 0
@@ -82,6 +83,6 @@
 		"integration": "composer phpunit -- --testsuite=semantic-result-formats-integration"
 	}
 		"extra": {
-		"installer-name": "SemanticResultFormats"
+		
 	}
 }
