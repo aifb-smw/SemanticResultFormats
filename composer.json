@@ -74,6 +74,7 @@
 		"branch-alias": {
 			"dev-master": "2.5.x-dev"
 		}
+		"installer-name": "SemanticResultFormats"
 	},
 	"config": {
 		"process-timeout": 0
@@ -82,6 +83,6 @@
 		"phpunit": "php ../../tests/phpunit/phpunit.php -c phpunit.xml.dist"
 	}
 		"extra": {
-		"installer-name": "SemanticResultFormats"
+		
 	}
 }
