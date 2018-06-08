@@ -70,10 +70,10 @@
 		]
 	},
 	"extra": {
+		"installer-name": "SemanticResultFormats",
 		"branch-alias": {
 			"dev-master": "3.0.x-dev"
 		}
-		"installer-name": "SemanticResultFormats"
 	},
 	"config": {
 		"process-timeout": 0
