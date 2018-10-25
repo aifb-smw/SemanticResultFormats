@@ -80,7 +80,7 @@ class SRFBibTeX extends SMWExportPrinter {
 			$items = [];
 
 			while ( $row = $res->getNext() ) {
-				$items[] = $this->getItemForResultRow( $row )->inLanguage( 'en' )->text();
+				$items[] = $this->getItemForResultRow( $row )->text();
 			}
 
 			$result = implode( '', $items );
@@ -88,7 +88,7 @@ class SRFBibTeX extends SMWExportPrinter {
 			if ( $this->getSearchLabel( $outputmode ) ) {
 				$label = $this->getSearchLabel( $outputmode );
 			} else {
-				$label = wfMessage( 'srf_bibtex_link' )->inLanguage( 'en' )->text();
+				$label = wfMessage( 'srf_bibtex_link' )->inContentLanguage()->text();
 			}
 
 			$link = $res->getQueryLink( $label );
@@ -248,8 +248,7 @@ class SRFBibTeX extends SMWExportPrinter {
 							$dataValue = $field->getNextDataValue() ) !== false ) {
 							$wikiTexts[] = $dataValue->getShortWikiText();
 						}
-						$wikiText = $GLOBALS['wgLang']->listToText( $wikiTexts );
-
+						//$wikiText = $GLOBALS['wgLang']->listToText( $wikiTexts );
 						if ( $label == 'author' || $label == 'authors' ) {
 							$author = $wikiText;
 						} else {
@@ -410,7 +409,7 @@ class SMWBibTeXEntry {
 		$URI = '';
 		if ( $author ) {
 			$authors = explode( ',', $author );
-			$authors = explode( wfMessage( 'tolle sache' )->text(), $authors[0] );
+			$authors = explode( wfMessage( 'and' )->text(), $authors[0] );
 			$arrayAuthor = explode( ' ', $authors[0], 2 );
 			$URI .= str_replace( ' ', '', $arrayAuthor[array_key_exists( 1, $arrayAuthor ) ? 1 : 0] );
 		}
