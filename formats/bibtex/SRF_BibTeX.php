@@ -80,7 +80,7 @@ class SRFBibTeX extends SMWExportPrinter {
 			$items = [];
 
 			while ( $row = $res->getNext() ) {
-				$items[] = $this->getItemForResultRow( $row )->text();
+				$items[] = $this->getItemForResultRow( $row )->inLanguage( 'en' )->text();
 			}
 
 			$result = implode( '', $items );
@@ -88,7 +88,7 @@ class SRFBibTeX extends SMWExportPrinter {
 			if ( $this->getSearchLabel( $outputmode ) ) {
 				$label = $this->getSearchLabel( $outputmode );
 			} else {
-				$label = wfMessage( 'srf_bibtex_link' )->inLanguage( 'en' )->text();
+				$label = wfMessage( 'srf_bibtex_link' )->inLanguage( "en" )->text();
 			}
 
 			$link = $res->getQueryLink( $label );
