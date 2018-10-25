@@ -189,7 +189,8 @@ class SRFBibTeX extends SMWExportPrinter {
 						while ( ( /* SMWDataValue */ $dataValue = $field->getNextDataValue() ) !== false ) {
 							$wikiTexts[] = $dataValue->getShortWikiText();
 						}
-						$wikiText = Language::factory( 'en' )->listToText( $wikiTexts );
+						$wikiText = Language::factory( 'en' )->listToText( $wikiTexts ); // places an "and" in english between the last two authors
+						//$wikiText = $GLOBALS['wgLang']->listToText( $wikiTexts ); places an "and" in the language of the wiki user between the last two authors
 						
 						if ( $label == 'author' || $label == 'authors' ) {
 							$author = $wikiText;
