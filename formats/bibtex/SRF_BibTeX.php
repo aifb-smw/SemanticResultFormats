@@ -310,7 +310,7 @@ class SMWBibTeXEntry {
 
 		$latex_equivalents = array (
 		    // Zus�tzliche Zeichen -- mm
-		    ord('$') => '\$',
+		    ord('$') => '\$$$$$$$$$$$$$$$$',
 		    ord('_') => '\_',
 		    ord('{') => '\{',
 		    ord('}') => '\}',
