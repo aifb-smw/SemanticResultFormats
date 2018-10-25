@@ -410,7 +410,7 @@ class SMWBibTeXEntry {
 		$URI = '';
 		if ( $author ) {
 			$authors = explode( ',', $author );
-			$authors = explode( wfMessage( 'and' )->text(), $authors[0] );
+			$authors = explode( wfMessage( 'tolle sache' )->text(), $authors[0] );
 			$arrayAuthor = explode( ' ', $authors[0], 2 );
 			$URI .= str_replace( ' ', '', $arrayAuthor[array_key_exists( 1, $arrayAuthor ) ? 1 : 0] );
 		}
