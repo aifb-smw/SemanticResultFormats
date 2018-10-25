@@ -88,7 +88,7 @@ class SRFBibTeX extends SMWExportPrinter {
 			if ( $this->getSearchLabel( $outputmode ) ) {
 				$label = $this->getSearchLabel( $outputmode );
 			} else {
-				$label = wfMessage( 'srf_bibtex_link' )->inLanguage( "en" )->text();
+				$label = wfMessage( 'srf_bibtex_link' )->inLanguage( 'en' )->text();
 			}
 
 			$link = $res->getQueryLink( $label );
