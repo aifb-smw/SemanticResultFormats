@@ -309,8 +309,8 @@ class SMWBibTeXEntry {
 	public static function BibTeXCharReplace($text) {
 
 		$latex_equivalents = array (
-		    // Zus�tzliche Zeichen -- mm
-		    ord('$') => '\$$$$$$$$$$$$$$$$',
+		    // Zusätzliche Zeichen -- mm
+		    ord('$') => '\$',
 		    ord('_') => '\_',
 		    ord('{') => '\{',
 		    ord('}') => '\}',
