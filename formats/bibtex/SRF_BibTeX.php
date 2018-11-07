@@ -421,7 +421,7 @@ class SMWBibTeXEntry {
 
 		if ( $title ) {
 			$firstwordoftitle = explode( ' ', $title );
-			$URI .= $firstwordoftitle[0];
+			$URI .= SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($firstwordoftitle[0]));
 			
 /* 			foreach ( explode( ' ', $title ) as $titleWord ) {
 				$charsTitleWord = preg_split( '//', $titleWord, - 1, PREG_SPLIT_NO_EMPTY );
