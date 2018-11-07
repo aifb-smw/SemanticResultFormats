@@ -406,7 +406,7 @@ class SMWBibTeXEntry {
 
 		$this->fields = $fields;
 
-		// generating the URI: author last name + year + first letters of title
+		// generating the URI: author last name + year + first word of title
 		$URI = '';
 		if ( $author ) {
 			$authors = explode( ',', $author );
@@ -420,13 +420,16 @@ class SMWBibTeXEntry {
 		}
 
 		if ( $title ) {
-			foreach ( explode( ' ', $title ) as $titleWord ) {
-				$charsTitleWord = preg_split( '//', $titleWord, -1, PREG_SPLIT_NO_EMPTY );
-
+			$firstwordoftitle = explode( ' ', $title );
+			$URI .= $firstwordoftitle[0];
+			
+/* 			foreach ( explode( ' ', $title ) as $titleWord ) {
+				$charsTitleWord = preg_split( '//', $titleWord, - 1, PREG_SPLIT_NO_EMPTY );
+				
 				if ( !empty( $charsTitleWord ) ) {
 					$URI .= $charsTitleWord[0];
 				}
-			}
+			} */
 		}
 
 		$this->URI = strtolower( $URI );
