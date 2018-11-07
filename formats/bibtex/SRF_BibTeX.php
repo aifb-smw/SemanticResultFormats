@@ -269,7 +269,7 @@ class SMWBibTeXEntry {
 			$authors = explode( ',', $author );
 			$authors = explode( wfMessage( 'and' )->text(), $authors[0] );
 			$arrayAuthor = explode( ' ', $authors[0], 2 );
-			$URI .= str_replace( ' ', '', $arrayAuthor[array_key_exists( 1, $arrayAuthor ) ? 1 : 0] );
+			$URI .= SMWBibTeXEntry::BibTeXCharReplace(utf8_decode(str_replace( ' ', '', $arrayAuthor[array_key_exists( 1, $arrayAuthor ) ? 1 : 0] )));
 		}
 		
 		if ( $year ) {
