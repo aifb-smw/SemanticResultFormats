@@ -248,8 +248,7 @@ class SRFBibTeX extends SMWExportPrinter {
 							$dataValue = $field->getNextDataValue() ) !== false ) {
 							$wikiTexts[] = $dataValue->getShortWikiText();
 						}
-						$wikiText = Language::factory( 'en' )->listToText( $wikiTexts ); // places an "and" in english between the last two authors
-						//$wikiText = $GLOBALS['wgLang']->listToText( $wikiTexts ); places an "and" in the language of the wiki user between the last two authors
+						$wikiText = implode(" and ", $wikiTexts);
 						if ( $label == 'author' || $label == 'authors' ) {
 							$author = $wikiText;
 						} else {
@@ -400,19 +399,25 @@ class SMWBibTeXEntry {
 		}
 
 		// fix Umlaute and other non-ascii chars
+<<<<<<< HEAD
 		foreach($fields as $key=>$val)
 			if ($key!="evastar_pdf")
 				$fields[$key]=SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($val));
 
 		$this->fields = $fields;
+=======
+		foreach ($fields as $key=>$val){
+			$fields[$key]=SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($val));
+			$this->fields = $fields;
+		}
+>>>>>>> fix URI -> last name of first author+year+first letters
 
-		// generating the URI: author last name + year + first word of title
+		// generating the URI: last name of first author + year + first letters of title(special characters will be filtered)
 		$URI = '';
 		if ( $author ) {
-			$authors = explode( ',', $author );
-			$authors = explode( wfMessage( 'and' )->text(), $authors[0] );
-			$arrayAuthor = explode( ' ', $authors[0], 2 );
-			$URI .= SMWBibTeXEntry::BibTeXCharReplace(utf8_decode(str_replace( ' ', '', $arrayAuthor[array_key_exists( 1, $arrayAuthor ) ? 1 : 0] )));
+		 	$arrayAuthor = explode( ' and ', $author );
+			$arrayAuthor = explode( ' ', $arrayAuthor[0] );
+			$URI .= SMWBibTeXEntry::BibTeXCharReplace(utf8_decode(end ( $arrayAuthor )));
 		}
 
 		if ( $year ) {
@@ -420,16 +425,11 @@ class SMWBibTeXEntry {
 		}
 
 		if ( $title ) {
-			$firstwordoftitle = explode( ' ', $title );
-			$URI .= SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($firstwordoftitle[0]));
-			
-/* 			foreach ( explode( ' ', $title ) as $titleWord ) {
-				$charsTitleWord = preg_split( '//', $titleWord, - 1, PREG_SPLIT_NO_EMPTY );
-				
-				if ( !empty( $charsTitleWord ) ) {
+ 			foreach ( explode( ' ', $title ) as $titleWord ) {
+				if( preg_match( '/[A-Za-z]/', $titleWord, $charsTitleWord )){
 					$URI .= $charsTitleWord[0];
 				}
-			} */
+			} 
 		}
 
 		$this->URI = strtolower( $URI );
