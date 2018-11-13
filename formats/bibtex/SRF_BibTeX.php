@@ -124,6 +124,8 @@ class SRFBibTeX extends SMWExportPrinter {
 		$eprint = '';
 		$howpublished = '';
 		$institution = '';
+		$isbn = '';
+		$issn = '';
 		$journal = '';
 		$key = '';
 		$month = '';
@@ -157,6 +159,8 @@ class SRFBibTeX extends SMWExportPrinter {
 				case 'eprint': $var =& $eprint; break;
 				case 'howpublished': $var =& $howpublished; break;
 				case 'institution': $var =& $institution; break;
+				case 'isbn': $var =& $isbn; break;
+				case 'issn': $var =& $issn; break;
 				case 'journal': $var =& $journal; break;
 				case 'key': $var =& $key; break;
 				case 'note': $var =& $note; break;
@@ -209,7 +213,7 @@ class SRFBibTeX extends SMWExportPrinter {
 			}
 		}
 
-		return new SMWBibTeXEntry( $type, $address, $annote, $author, $booktitle, $chapter, $crossref, $doi, $edition, $editor, $eprint, $howpublished, $institution, $journal, $key, $month, $note, $number, $organization, $pages, $publisher, $school, $series, $title, $url, $volume, $year );
+		return new SMWBibTeXEntry( $type, $address, $annote, $author, $booktitle, $chapter, $crossref, $doi, $edition, $editor, $eprint, $howpublished, $institution, $isbn, $issn, $journal, $key, $month, $note, $number, $organization, $pages, $publisher, $school, $series, $title, $url, $volume, $year );
 	}
 }
 
@@ -222,7 +226,7 @@ class SMWBibTeXEntry {
 	private $URI;
 	private $fields = [];
 
-	public function __construct( $type, $address, $annote, $author, $booktitle, $chapter, $crossref, $doi, $edition, $editor, $eprint, $howpublished, $institution, $journal, $key, $month, $note, $number, $organization, $pages, $publisher, $school, $series, $title, $url, $volume, $year ) {
+	public function __construct( $type, $address, $annote, $author, $booktitle, $chapter, $crossref, $doi, $edition, $editor, $eprint, $howpublished, $institution, $isbn, $issn, $journal, $key, $month, $note, $number, $organization, $pages, $publisher, $school, $series, $title, $url, $volume, $year ) {
 		if ( $type ) $this->bibTeXtype = ucfirst( $type ); else $this->bibTeXtype = 'Book';
 
 		$fields = [];
@@ -239,6 +243,8 @@ class SMWBibTeXEntry {
 		if ( $eprint ) $fields['eprint'] = $eprint;
 		if ( $howpublished ) $fields['howpublished'] = $howpublished;
 		if ( $institution ) $fields['institution'] = $institution;
+		if ( $isbn ) $fields['isbn'] = $isbn;
+		if ( $issn ) $fields['issn'] = $isbn;
 		if ( $journal ) $fields['journal'] = $journal;
 		if ( $key ) $fields['key'] = $key;
 		if ( $month ) $fields['month'] = $month;
