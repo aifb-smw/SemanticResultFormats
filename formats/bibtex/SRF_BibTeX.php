@@ -128,6 +128,8 @@ class SRFBibTeX extends SMWExportPrinter {
 		$eprint = '';
 		$howpublished = '';
 		$institution = '';
+		$isbn = '';
+		$issn = '';
 		$journal = '';
 		$key = '';
 		$month = '';
@@ -183,6 +185,12 @@ class SRFBibTeX extends SMWExportPrinter {
 					break;
 				case 'institution':
 					$var =& $institution;
+					break;
+				case 'isbn':
+					$var =& $isbn;
+					break;
+				case 'issn':
+					$var =& $issn;
 					break;
 				case 'journal':
 					$var =& $journal;
@@ -281,6 +289,8 @@ class SRFBibTeX extends SMWExportPrinter {
 			$eprint,
 			$howpublished,
 			$institution,
+			$isbn,
+			$issn,
 			$journal,
 			$key,
 			$month,
@@ -355,6 +365,12 @@ class SMWBibTeXEntry {
 		if ( $institution ) {
 			$fields['institution'] = $institution;
 		}
+		if ( $isbn ) {
+			$fields['isbn'] = $isbn;
+		}
+		if ( $issn ) {
+			$fields['issn'] = $isbn;
+		}
 		if ( $journal ) {
 			$fields['journal'] = $journal;
 		}
@@ -399,18 +415,10 @@ class SMWBibTeXEntry {
 		}
 
 		// fix Umlaute and other non-ascii chars
-<<<<<<< HEAD
-		foreach($fields as $key=>$val)
-			if ($key!="evastar_pdf")
-				$fields[$key]=SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($val));
-
-		$this->fields = $fields;
-=======
 		foreach ($fields as $key=>$val){
 			$fields[$key]=SMWBibTeXEntry::BibTeXCharReplace(utf8_decode($val));
 			$this->fields = $fields;
 		}
->>>>>>> fix URI -> last name of first author+year+first letters
 
 		// generating the URI: last name of first author + year + first letters of title(special characters will be filtered)
 		$URI = '';
