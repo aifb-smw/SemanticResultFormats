@@ -244,7 +244,7 @@ class SMWBibTeXEntry {
 		if ( $howpublished ) $fields['howpublished'] = $howpublished;
 		if ( $institution ) $fields['institution'] = $institution;
 		if ( $isbn ) $fields['isbn'] = $isbn;
-		if ( $issn ) $fields['issn'] = $isbn;
+		if ( $issn ) $fields['issn'] = $issn;
 		if ( $journal ) $fields['journal'] = $journal;
 		if ( $key ) $fields['key'] = $key;
 		if ( $month ) $fields['month'] = $month;
