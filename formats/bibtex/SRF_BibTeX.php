@@ -369,7 +369,7 @@ class SMWBibTeXEntry {
 			$fields['isbn'] = $isbn;
 		}
 		if ( $issn ) {
-			$fields['issn'] = $isbn;
+			$fields['issn'] = $issn;
 		}
 		if ( $journal ) {
 			$fields['journal'] = $journal;
