@@ -425,7 +425,7 @@ class SMWBibTeXEntry {
 		if ( $author ) {
 		 	$arrayAuthor = explode( ' and ', $author );
 			$arrayAuthor = explode( ' ', $arrayAuthor[0] );
-			$URI .= SMWBibTeXEntry::BibTeXCharReplace(utf8_decode(end ( $arrayAuthor )));
+			$URI .= SMWBibTeXEntry::BibTeXURIReplace(utf8_decode(end ( $arrayAuthor )));
 		}
 
 		if ( $year ) {
@@ -457,6 +457,27 @@ class SMWBibTeXEntry {
 
 		return $text;
 	}
+	/**
+	 * Replaces Ä,ä,Ö,ö,Ü,ü,ß in URI
+	 */
+	public static function BibTeXURIReplace($text) {
+		$latex_equivalents = array (
+			0x00c4 => 'Ae',
+			0x00e4 => 'ae',
+			0x00d6 => 'Oe',
+			0x00f6 => 'oe',
+			0x00dc => 'Ue',
+			0x00fc => 'ue',
+			0x00df => 'ss',
+		);
+			
+	$textarray=str_split($text);
+	$output="";
+	foreach ($textarray as $i) 
+	   $output.=($latex_equivalents[ord($i)]?"".$latex_equivalents[ord($i)]."":$i);
+	return $output;
+	}
+	
 	/**
 	 * Replaces special characters into latex language .
 	 */
