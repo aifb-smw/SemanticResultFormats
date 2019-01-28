@@ -305,7 +305,7 @@ class SMWBibTeXEntry {
 		return $text;
 	}
 	/**
-	 * Replaces Ä,ä,Ö,ö,Ü,ü,ß in URI
+	 * Replaces Ä,ä,Ö,ö,Ü,ü,ß in URI and every other sign will be deleted
 	 */
 	public static function BibTeXURIReplace($text) {
 		$latex_equivalents = array (
@@ -323,7 +323,7 @@ class SMWBibTeXEntry {
 	foreach ($textarray as $i) {
 	   $output.=($latex_equivalents[ord($i)]?"".$latex_equivalents[ord($i)]."":$i);
 	}
-	$output = preg_replace ( '/[A-Za-z]/', '', $output );
+	$output = preg_replace ( '/[^a-z]/i', '', $output );
 	return $output;
 	}
 	
@@ -352,10 +352,11 @@ class SMWBibTeXEntry {
 		    0x00a3 => '\\pounds',
 		    0x00a7 => '\\S',
 		    0x00a8 => '\\"{}',
-		    0x00a9 => '\\copyright',
+		    0x00a9 => '\\textcopyright',
 		    0x00af => '\\={}',
 		    0x00ac => '\\neg',
 		    0x00ad => '\\-',
+			0x00ae => '\\textregistered',
 		    0x00b0 => '\\mbox{$^\\circ$}',
 		    0x00b1 => '\\mbox{$\\pm$}',
 		    0x00b2 => '\\mbox{$^2$}',
@@ -601,7 +602,7 @@ class SMWBibTeXEntry {
     0x201d => "''",
     0x2020 => '\\dag',
     0x2021 => '\\ddag',
-    0x2122 => '\texttrademark',
+    0x2122 => '\\texttrademark',
     0x2022 => '\\mbox{$\\bullet$',
     0x2026 => '\\ldots',
     0x2202 => '\\mbox{$\\partial$',
