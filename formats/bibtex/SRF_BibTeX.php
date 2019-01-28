@@ -473,8 +473,10 @@ class SMWBibTeXEntry {
 			
 	$textarray=str_split($text);
 	$output="";
-	foreach ($textarray as $i) 
+	foreach ($textarray as $i) {
 	   $output.=($latex_equivalents[ord($i)]?"".$latex_equivalents[ord($i)]."":$i);
+	}
+	$output = preg_replace ( '/[A-Za-z]/', '', $output );
 	return $output;
 	}
 	
@@ -752,7 +754,7 @@ class SMWBibTeXEntry {
     0x201d => "''",
     0x2020 => '\\dag',
     0x2021 => '\\ddag',
-    0x2122 => '\\mbox{$^\\mbox{TM}$',
+    0x2122 => '\texttrademark',
     0x2022 => '\\mbox{$\\bullet$',
     0x2026 => '\\ldots',
     0x2202 => '\\mbox{$\\partial$',
