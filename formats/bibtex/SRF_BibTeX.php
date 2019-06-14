@@ -320,7 +320,7 @@ class SMWBibTeXEntry {
 	private $URI;
 	private $fields = [];
 
-	public function __construct( $type, $address, $annote, $author, $booktitle, $chapter, $crossref, $doi, $edition, $editor, $eprint, $howpublished, $institution, $journal, $key, $month, $note, $number, $organization, $pages, $publisher, $school, $series, $title, $url, $volume, $year ) {
+	public function __construct( $type, $address, $annote, $author, $booktitle, $chapter, $crossref, $doi, $edition, $editor, $eprint, $howpublished, $institution, $isbn, $issn, $journal, $key, $month, $note, $number, $organization, $pages, $publisher, $school, $series, $title, $url, $volume, $year ) {
 		if ( $type ) {
 			$this->bibTeXtype = ucfirst( $type );
 		} else {
